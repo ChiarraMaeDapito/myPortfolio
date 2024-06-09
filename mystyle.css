@@ -1,0 +1,445 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+header {
+    /* background: url('1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    padding: 60px 0; */
+    text-align: center;
+    height: 200px;
+} 
+
+/* .cover{
+    height: 450px;
+}
+
+.cover img{
+    height: 90%;
+    width: 100%;
+} */
+
+.facebook-cover {
+    position: relative;
+    width:100%;
+    height: 312px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-text {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+@media (max-width: 768px) {
+    .cover-text{
+        left: 35%;
+        font-size: 15px;
+    }
+
+    .cover-image {
+        object-fit: cover;
+        position: absolute; /* Ensure the image is positioned absolutely */
+        right: 0px;
+        width: calc(125% + 10px); /* Adjust the width to fit the screen minus the left offset */
+        height: 100%; /* Maintain the aspect ratio */
+    }
+}
+
+.cover-text h1 {
+    margin: 0;
+    font-size: 3em;
+}
+
+.cover-text p {
+    margin: 0;
+    font-size: 1.2em;
+    
+}
+
+.name2{
+    margin-top: -150px;
+    font-size: 2rem;
+    font-weight:bold;
+    color: #e4e4e4;
+    margin-left: 20px;
+}
+
+
+header h1 {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.bio, .skills, .portfolio, .contact {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+.bio h2, .skills h2, .portfolio h2, .contact h2 {
+    color: #000000;
+    font-size: 2rem;
+    padding-left: 1rem;
+}
+.bio img {
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+.bio p{
+    text-indent: 2rem;
+}
+/* .skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+.skills li {
+    background: #e4e4e4;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+} */
+.portfolio img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.social-links a {
+    color: #0073e6;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+.social-links a:hover {
+    text-decoration: underline;
+}
+footer {
+    background-color: #f8bf21;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 85%;
+    margin: 0 auto;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    max-height: 800px;
+    /* overflow: hidden; */
+}
+
+.carousel-slide {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 0.5em 0.8em;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.carousel-navigation {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-navigation .nav-btn {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+.carousel-navigation .nav-btn.active {
+    background-color: #333;
+}
+
+.grid-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.grid-section-div {
+    padding: 10px;
+}
+
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    padding: 0px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.card-content p {
+    margin: 0;
+    font-size: 1em;
+    color: #666;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    footer {
+        width: 90%;
+    }
+}
+
+
+
+.row3 > .column3 {
+    padding: 0 8px;
+    cursor: pointer;
+  }
+  
+  .row3:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .column3 {
+    float: left;
+    width: 20%;
+  }
+
+  @media (max-width: 768px) {
+    .column3 {
+        float: left;
+        width: 50%;
+      }
+}
+  
+  /* The Modal (background) */
+  .modal3 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+  }
+  
+  /* Modal Content */
+  .modal-content3 {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+
+  }
+  
+  /* The Close Button */
+  .close3 {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close3:hover,
+  .close3:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .mySlides3 {
+    display: none;
+  }
+  
+  .cursor3 {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  .prev3,
+  .next3 {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next3 {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev3:hover,
+  .next3:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext3 {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  img {
+    margin-bottom: -4px;
+  }
+  
+  .caption-container3 {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+  }
+  
+  .demo3 {
+    opacity: 0.6;
+  }
+  
+  .active3,
+  .demo3:hover {
+    opacity: 1;
+  }
+  
+  img.hover-shadow3 {
+    transition: 0.3s;
+  }
+  
+  .hover-shadow3:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
