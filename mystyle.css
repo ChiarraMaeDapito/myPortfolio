@@ -1,5 +1,11 @@
+*{
+    font-family: "Comic Neue", cursive;
+    font-weight: 500;
+    font-style: normal;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+   
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -40,6 +46,7 @@ header {
 }
 
 .cover-text {
+    
     position: absolute;
     top: 50%;
     left: 25%;
@@ -67,12 +74,15 @@ header {
 
 .cover-text h1 {
     margin: 0;
-    font-size: 3em;
+    font-size: 3.3em;
+    font-weight: 700;
+    
 }
 
 .cover-text p {
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1.4em;
+
     
 }
 
