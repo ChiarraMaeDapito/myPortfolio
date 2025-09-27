@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chiarra Mae Herrera Dapito - IT Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Chiarra Mae Herrera Dapito - IT Professional & Virtual Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
         * {
@@ -26,12 +26,20 @@
         /* Header */
         header {
             background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             padding: 1rem 0;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.5rem 0;
         }
 
         .container {
@@ -47,71 +55,168 @@
             flex-wrap: wrap;
         }
 
-        .name {
-            font-size: 2rem;
-            font-weight: 600;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
             color: #4facfe;
             text-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
         }
 
-        .contact {
+        .nav-menu {
             display: flex;
-            gap: 1.5rem;
-            font-size: 0.9rem;
-            flex-wrap: wrap;
+            gap: 2rem;
+            list-style: none;
         }
 
-        .contact a {
-            color: #a0a0a0;
+        .nav-menu a {
+            color: #e0e0e0;
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .contact a:hover {
+        .nav-menu a:hover {
             color: #4facfe;
+            transform: translateY(-2px);
         }
 
-        /* Profile Image */
-        .profile-section {
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4facfe;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
             text-align: center;
-            padding: 4rem 0;
-            background: rgba(255, 255, 255, 0.05);
+            background:
+                radial-gradient(circle at 20% 80%, rgba(79, 172, 254, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #4facfe;
-            box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
-            margin-bottom: 1rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+            opacity: 0.5;
         }
 
-        .profile h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
-        .profile-subtitle {
-            font-size: 1.2rem;
-            color: #a0a0a0;
-            margin-bottom: 2rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 4rem 0;
+        .hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .section-title {
-            font-size: 2rem;
-            font-weight: 500;
-            color: #4facfe;
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #4facfe;
+            box-shadow:
+                0 0 30px rgba(79, 172, 254, 0.4),
+                inset 0 0 0 4px rgba(255, 255, 255, 0.1);
             margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 40px rgba(79, 172, 254, 0.6),
+                inset 0 0 0 4px rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #4facfe;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem 1.2rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(79, 172, 254, 0.1);
+            border-color: rgba(79, 172, 254, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .contact-item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: #4facfe;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #4facfe;
+            margin-bottom: 3rem;
             text-align: center;
             position: relative;
         }
@@ -119,68 +224,112 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 2px;
-            background: #4facfe;
-            margin: 0.5rem auto;
-            border-radius: 1px;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            margin: 1rem auto;
+            border-radius: 2px;
         }
 
-        /* Profile Content */
-        .profile-content {
-            text-align: center;
-            max-width: 600px;
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 900px;
             margin: 0 auto;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Experience */
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #4facfe, rgba(79, 172, 254, 0.3));
+            transform: translateX(-50%);
+        }
+
         .experience-item {
             background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            width: calc(50% - 2rem);
+        }
+
+        .experience-item:nth-child(odd) {
+            left: 0;
             border-left: 4px solid #4facfe;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:nth-child(even) {
+            left: calc(50% + 2rem);
+            border-right: 4px solid #4facfe;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #4facfe;
+            border-radius: 50%;
+            top: 3rem;
+            box-shadow: 0 0 0 4px rgba(15, 15, 35, 1), 0 0 20px rgba(79, 172, 254, 0.5);
+        }
+
+        .experience-item:nth-child(odd)::before {
+            right: -2.5rem;
+        }
+
+        .experience-item:nth-child(even)::before {
+            left: -2.5rem;
         }
 
         .experience-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.2);
+            border-color: rgba(79, 172, 254, 0.5);
         }
 
         .job-title {
-            font-size: 1.3rem;
-            font-weight: 500;
+            font-size: 1.5rem;
+            font-weight: 600;
             color: #ffffff;
             margin-bottom: 0.5rem;
         }
 
         .company {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #4facfe;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         .job-dates {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #a0a0a0;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: inline-block;
         }
 
         .job-desc {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
         }
 
         .job-desc li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
+            line-height: 1.6;
         }
 
         .job-desc li::before {
@@ -189,117 +338,339 @@
             left: 0;
             color: #4facfe;
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        /* Education */
+        /* Education Section */
         .education-item {
             background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
+            padding: 3rem;
+            border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.2);
         }
 
         .degree {
-            font-size: 1.3rem;
-            font-weight: 500;
+            font-size: 1.8rem;
+            font-weight: 600;
             color: #ffffff;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .school {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #4facfe;
             margin-bottom: 1rem;
         }
 
-        /* Skills */
-        .skills-grid {
+        .achievements {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .achievements h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievements li {
+            color: #b0b0b0;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .achievements li::before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Skills Section */
+        .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 172, 254, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #4facfe;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
         }
 
         .skill-tag {
             background: rgba(79, 172, 254, 0.1);
-            padding: 0.8rem 1.2rem;
-            border-radius: 25px;
-            text-align: center;
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
             border: 1px solid rgba(79, 172, 254, 0.3);
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
         .skill-tag:hover {
             background: rgba(79, 172, 254, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(79, 172, 254, 0.2);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-title {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-description {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(79, 172, 254, 0.1);
+            color: #4facfe;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(79, 172, 254, 0.2);
         }
 
         /* Footer */
         footer {
             background: rgba(0, 0, 0, 0.5);
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
             color: #a0a0a0;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 5rem;
         }
 
-        /* Responsive */
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .experience-timeline::before {
+                left: 2rem;
+            }
+
+            .experience-item {
+                width: calc(100% - 4rem);
+                left: 4rem !important;
+                border-left: 4px solid #4facfe !important;
+                border-right: none !important;
+            }
+
+            .experience-item::before {
+                left: -2.5rem !important;
+                right: auto !important;
+            }
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 gap: 1rem;
-                text-align: center;
             }
 
-            .contact {
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
                 justify-content: center;
             }
 
-            .name {
-                font-size: 1.5rem;
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .experience-timeline::before {
+                display: none;
+            }
+
+            .experience-item {
+                width: 100%;
+                left: 0 !important;
+                margin-bottom: 2rem;
+            }
+
+            .experience-item::before {
+                display: none;
             }
 
             section {
-                padding: 2rem 0;
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
             }
 
-            .profile-content {
-                padding: 1rem;
-                font-size: 1rem;
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="container">
             <div class="header-content">
-                <h1 class="name">Chiarra Mae Herrera Dapito</h1>
-                <div class="contact">
-                    <a href="tel:+639309695287">📞 0930-969-5287</a>
-                    <a href="mailto:dapitochiarramae16@gmail.com">✉ dapitochiarramae16@gmail.com</a>
-                    <a href="https://linkedin.com/in/chiarra-mae-dapito-092b45261" target="_blank">🔗 LinkedIn</a>
-                    <span>📍 Sta. Rosa, Laguna | 🎂 October 11, 2000</span>
-                </div>
+                <div class="logo">Chiarra Mae</div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
 
-    <section class="profile-section">
+    <section id="home" class="hero">
         <div class="container">
-            <img src="images/pic.jpg" alt="Profile Photo of Chiarra Mae Herrera Dapito" class="profile-image">
-            <div class="profile">
+            <div class="hero-content">
+                <img src="/images/profile.jpeg" alt="Chiarra Mae Herrera Dapito" class="profile-image">
                 <h1>Chiarra Mae Herrera Dapito</h1>
-                <p class="profile-subtitle">Administrative & Marketing Support Specialist | B.S. in Information
-                    Technology</p>
-                <div class="profile-content">
-                    <p>Detail-oriented and proactive Administrative & Marketing Support Specialist with a B.S. in
-                        Information Technology and proven experience in administrative operations, recruitment
-                        coordination, and client communication. Skilled in managing documentation, streamlining
-                        workflows, and ensuring efficient business support. Recognized for strong communication,
-                        organizational skills, and the ability to adapt quickly in fast-paced environments.</p>
+                <p class="hero-subtitle">IT Professional & Virtual Assistant Specialist</p>
+                <div class="hero-description">
+                    Detail-oriented and proactive IT Professional with a B.S. in Information Technology and proven
+                    experience in administrative operations, marketing support, and client communication. Skilled in
+                    managing documentation, streamlining workflows, and delivering efficient business solutions.
+                    Recognized for strong communication, organizational skills, and the ability to adapt quickly in
+                    fast-paced environments.
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <a href="tel:+639309695287">0930-969-5287</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉</span>
+                        <a href="mailto:dapitochiarramae16@gmail.com">dapitochiarramae16@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <a href="https://linkedin.com/in/chiarra-mae-dapito-092b45261" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Sta. Rosa, Laguna</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -308,36 +679,52 @@
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
-            <div class="experience-item">
-                <h3 class="job-title">Marketing Assistant (Promoted)</h3>
-                <p class="company">IT Managers Inc., Mandaluyong, NCR</p>
-                <p class="job-dates">Nov 2024 – Jul 2025</p>
-                <ul class="job-desc">
-                    <li>Provided combined administrative and recruitment support, optimizing daily business operations.
-                    </li>
-                    <li>Conducted initial candidate interviews and scheduled client meetings via MS Teams.</li>
-                    <li>Edited and formatted CVs and contracts (PEA, NDA) for accuracy and professionalism.</li>
-                    <li>Maintained accurate employee records (201 files) and consolidated onboarding requirements.</li>
-                    <li>Managed HMO enrollments and employee case interventions with HR.</li>
-                    <li>Monitored recruitment and HR data through Excel trackers, improving reporting accuracy.</li>
-                    <li>Assisted in client engagement activities and implementation of marketing strategies.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h3 class="job-title">Marketing Support</h3>
-                <p class="company">IT Managers Inc., Mandaluyong, NCR</p>
-                <p class="job-dates">Aug 2024 – Nov 2024</p>
-                <ul class="job-desc">
-                    <li>Acted as liaison between the marketing team and internal departments, ensuring smooth
-                        coordination.</li>
-                    <li>Processed BDO client application forms and administrative requests with accuracy and efficiency.
-                    </li>
-                    <li>Oversaw logistics, including laptop delivery, ID/HMO distribution, and asset retrieval.</li>
-                    <li>Managed multiple tracking systems (errand logs, 201 files, bench monitoring) to streamline
-                        processes.</li>
-                    <li>Coordinated with suppliers for ID processing and distribution.</li>
-                    <li>Handled petty cash reimbursements and other financial transactions.</li>
-                </ul>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3 class="job-title">Marketing Assistant (Promoted)</h3>
+                    <p class="company">IT Managers Inc., Mandaluyong, NCR</p>
+                    <p class="job-dates">Nov 2024 – Jul 2025</p>
+                    <ul class="job-desc">
+                        <li>Provided combined administrative and recruitment support, optimizing daily business
+                            operations</li>
+                        <li>Conducted initial candidate interviews and scheduled client meetings via MS Teams</li>
+                        <li>Edited and formatted CVs and contracts (PEA, NDA) for accuracy and professionalism</li>
+                        <li>Maintained accurate employee records (201 files) and consolidated onboarding requirements
+                        </li>
+                        <li>Managed HMO enrollments and employee case interventions with HR</li>
+                        <li>Monitored recruitment and HR data through Excel trackers, improving reporting accuracy</li>
+                        <li>Assisted in client engagement activities and implementation of marketing strategies</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Marketing Support</h3>
+                    <p class="company">IT Managers Inc., Mandaluyong, NCR</p>
+                    <p class="job-dates">Aug 2024 – Nov 2024</p>
+                    <ul class="job-desc">
+                        <li>Acted as liaison between marketing team and internal departments, ensuring smooth
+                            coordination</li>
+                        <li>Processed BDO client application forms and administrative requests with accuracy and
+                            efficiency</li>
+                        <li>Oversaw logistics including laptop delivery, ID/HMO distribution, and asset retrieval</li>
+                        <li>Managed multiple tracking systems (errand logs, 201 files, bench monitoring) to streamline
+                            processes</li>
+                        <li>Coordinated with suppliers for ID processing and distribution</li>
+                        <li>Handled petty cash reimbursements and other financial transactions</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Customer Experience Agent</h3>
+                    <p class="company">Alorica, Eton Centris</p>
+                    <p class="job-dates">Jan 2024 – Mar 2024</p>
+                    <ul class="job-desc">
+                        <li>Provided exceptional customer service through phone and digital channels</li>
+                        <li>Resolved customer inquiries and complaints with professionalism and efficiency</li>
+                        <li>Maintained detailed records of customer interactions and follow-up actions</li>
+                        <li>Exceeded performance metrics for customer satisfaction and call resolution times</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -347,35 +734,131 @@
             <h2 class="section-title">Education</h2>
             <div class="education-item">
                 <h3 class="degree">Bachelor of Science in Information Technology</h3>
-                <p class="school">Mindoro State University — Graduated 2023</p>
+                <p class="school">Mindoro State University</p>
+                <p style="color: #a0a0a0; margin-bottom: 1rem;">2019 - 2023</p>
+                <div class="achievements">
+                    <h4>Academic Achievements</h4>
+                    <ul>
+                        <li>Dean's Lister</li>
+                        <li>3rd Best Paper - 1st PSITE MIMAROPA Regional Convention</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">Key Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-tag">Administrative & Clerical Support</div>
-                <div class="skill-tag">Recruitment Coordination & Onboarding</div>
-                <div class="skill-tag">Data Entry & Records Management</div>
-                <div class="skill-tag">Calendar & Task Scheduling</div>
-                <div class="skill-tag">Document Editing & Formatting</div>
-                <div class="skill-tag">Client & Internal Communication</div>
-                <div class="skill-tag">MS Office Suite & Google Workspace</div>
-                <div class="skill-tag">Collaboration Tools: MS Teams, Zoom, Outlook, Slack</div>
-                <div class="skill-tag">Basic Canva & Presentation Support</div>
-                <div class="skill-tag">Time Management & Prioritization</div>
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Administrative & Operations</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Administrative Support</span>
+                        <span class="skill-tag">Data Entry</span>
+                        <span class="skill-tag">Records Management</span>
+                        <span class="skill-tag">Calendar Scheduling</span>
+                        <span class="skill-tag">Document Processing</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Virtual Assistant Services</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Email Management</span>
+                        <span class="skill-tag">Appointment Setting</span>
+                        <span class="skill-tag">Social Media Management</span>
+                        <span class="skill-tag">Client Communication</span>
+                        <span class="skill-tag">Digital Product Sales</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MS Office Suite</span>
+                        <span class="skill-tag">Google Workspace</span>
+                        <span class="skill-tag">MS Teams</span>
+                        <span class="skill-tag">Slack</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Basic Graphics Design</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Recruitment & HR</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Candidate Screening</span>
+                        <span class="skill-tag">Interview Coordination</span>
+                        <span class="skill-tag">Onboarding Process</span>
+                        <span class="skill-tag">HR Documentation</span>
+                        <span class="skill-tag">Employee Relations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Portfolio & Projects</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Educational Content Creation</h3>
+                        <p class="portfolio-description">
+                            Created engaging "Busy Books about Animals" - an educational resource featuring interactive
+                            content for children's learning and development.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Canva</span>
+                            <span class="tech-tag">Content Creation</span>
+                            <span class="tech-tag">Educational Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Administrative Process Optimization</h3>
+                        <p class="portfolio-description">
+                            Developed and implemented tracking systems for recruitment, HR documentation, and
+                            operational processes, improving efficiency by 30%.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Excel</span>
+                            <span class="tech-tag">Process Improvement</span>
+                            <span class="tech-tag">Data Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Virtual Assistant Services</h3>
+                        <p class="portfolio-description">
+                            Comprehensive virtual assistance including email management, appointment scheduling, social
+                            media coordination, and client communication support.
+                        </p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Communication</span>
+                            <span class="tech-tag">Time Management</span>
+                            <span class="tech-tag">Client Relations</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Chiarra Mae Herrera Dapito
-            </p>
+            <p>&copy; 2024 Chiarra Mae Herrera Dapito. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Ready to collaborate and drive success together</p>
         </div>
     </footer>
+
+
 
     <script>
         // Simple smooth scrolling for section links (if added later)
@@ -401,5 +884,3 @@
 </body>
 
 </html>
-
-
